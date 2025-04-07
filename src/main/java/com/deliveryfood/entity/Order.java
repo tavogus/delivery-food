@@ -48,6 +48,9 @@ public class Order {
     @Column(name = "payment_method", nullable = false)
     private String paymentMethod;
 
+    @Column(name = "paid", nullable = false)
+    private boolean paid;
+
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItem> items = new ArrayList<>();
 
@@ -123,6 +126,14 @@ public class Order {
 
     public void setPaymentMethod(String paymentMethod) {
         this.paymentMethod = paymentMethod;
+    }
+
+    public boolean isPaid() {
+        return paid;
+    }
+
+    public void setPaid(boolean paid) {
+        this.paid = paid;
     }
 
     public List<OrderItem> getItems() {

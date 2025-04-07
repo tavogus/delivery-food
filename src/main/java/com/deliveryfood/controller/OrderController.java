@@ -50,4 +50,11 @@ public class OrderController {
             @RequestBody OrderStatus status) {
         return ResponseEntity.ok(orderService.updateOrderStatus(id, status));
     }
+    
+    @PostMapping("/pay/{orderId}/user/{userId}")
+    public ResponseEntity<OrderResponseDTO> payOrder(
+            @PathVariable Long orderId,
+            @PathVariable Long userId) {
+        return ResponseEntity.ok(orderService.payOrder(orderId, userId));
+    }
 } 

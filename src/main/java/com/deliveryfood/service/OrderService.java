@@ -1,19 +1,25 @@
 package com.deliveryfood.service;
 
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.stereotype.Service;
+
 import com.deliveryfood.dto.OrderItemRequestDTO;
 import com.deliveryfood.dto.OrderItemResponseDTO;
 import com.deliveryfood.dto.OrderRequestDTO;
 import com.deliveryfood.dto.OrderResponseDTO;
-import com.deliveryfood.entity.*;
+import com.deliveryfood.entity.Order;
+import com.deliveryfood.entity.OrderItem;
+import com.deliveryfood.entity.OrderStatus;
+import com.deliveryfood.entity.Product;
+import com.deliveryfood.entity.Restaurant;
+import com.deliveryfood.entity.User;
 import com.deliveryfood.repository.OrderRepository;
 import com.deliveryfood.repository.ProductRepository;
 import com.deliveryfood.repository.RestaurantRepository;
 import com.deliveryfood.repository.UserRepository;
-import org.springframework.stereotype.Service;
-
-import java.math.BigDecimal;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class OrderService {
@@ -66,8 +72,8 @@ public class OrderService {
         }
         
         order.setTotalAmount(totalAmount);
-        Order savedOrder = orderRepository.save(order);
-        return mapToResponseDTO(savedOrder);
+        order = orderRepository.save(order);
+        return mapToResponseDTO(order);
     }
 
     public OrderResponseDTO getOrder(Long id) {
@@ -96,11 +102,30 @@ public class OrderService {
     public OrderResponseDTO updateOrderStatus(Long id, OrderStatus status) {
         Order order = orderRepository.findById(id).orElseThrow(() -> new RuntimeException("Order with id " + id + " not found"));
 
-        order.setStatus(status);
+        if (order.isPaid()) {
+            order.setStatus(status);
+            order = orderRepository.save(order);
+        }
+
+        return mapToResponseDTO(order);
+    }
+    
+    public OrderResponseDTO payOrder(Long orderId, Long userId) {
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new RuntimeException("Order with id " + orderId + " not found"));
+
+        if (!order.getUser().getId().equals(userId)) {
+            throw new RuntimeException("Order does not belong to the specified user");
+        }
+
+        if (order.getStatus() != OrderStatus.PENDING) {
+            throw new RuntimeException("Order is not in PENDING status");
+        }
+
+        order.setPaid(true);
 
         order = orderRepository.save(order);
         return mapToResponseDTO(order);
-
     }
 
     private OrderResponseDTO mapToResponseDTO(Order order) {
@@ -126,6 +151,7 @@ public class OrderService {
             order.getTotalAmount(),
             order.getDeliveryAddress(),
             order.getPaymentMethod(),
+            order.isPaid(),
             items,
             order.getCreatedAt(),
             order.getUpdatedAt()

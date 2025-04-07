@@ -16,6 +16,7 @@ public record OrderResponseDTO(
     BigDecimal totalAmount,
     String deliveryAddress,
     String paymentMethod,
+    Boolean paid,
     List<OrderItemResponseDTO> items,
     LocalDateTime createdAt,
     LocalDateTime updatedAt
