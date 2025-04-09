@@ -40,6 +40,7 @@ CREATE TABLE IF NOT EXISTS products (
 -- Create Orders table
 CREATE TABLE IF NOT EXISTS orders (
     id BIGSERIAL PRIMARY KEY,
+    order_number VARCHAR(50) NOT NULL UNIQUE,
     user_id BIGINT NOT NULL REFERENCES users(id),
     restaurant_id BIGINT NOT NULL REFERENCES restaurants(id),
     status VARCHAR(20) NOT NULL,

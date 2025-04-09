@@ -19,6 +19,10 @@ public class RestaurantService {
     }
 
     public RestaurantResponseDTO createRestaurant(RestaurantRequestDTO request) {
+        if (restaurantRepository.existsByName(request.name())) {
+            throw new RuntimeException("Restaurant with name " + request.name() + " already exists");
+        }
+
         Restaurant restaurant = new Restaurant();
         restaurant.setName(request.name());
         restaurant.setDescription(request.description());

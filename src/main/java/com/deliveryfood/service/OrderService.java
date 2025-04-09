@@ -2,6 +2,7 @@ package com.deliveryfood.service;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -48,6 +49,7 @@ public class OrderService {
                 .orElseThrow(() -> new RuntimeException("Restaurant not found"));
 
         Order order = new Order();
+        order.setOrderNumber(generateOrderNumber());
         order.setUser(user);
         order.setRestaurant(restaurant);
         order.setStatus(OrderStatus.PENDING);
@@ -143,6 +145,7 @@ public class OrderService {
 
         return new OrderResponseDTO(
             order.getId(),
+            order.getOrderNumber(),
             order.getUser().getId(),
             order.getUser().getName(),
             order.getRestaurant().getId(),
@@ -156,5 +159,13 @@ public class OrderService {
             order.getCreatedAt(),
             order.getUpdatedAt()
         );
+    }
+
+    private String generateOrderNumber() {
+        String orderNumber;
+        do {
+            orderNumber = UUID.randomUUID().toString().substring(0, 8);
+        } while (orderRepository.existsByOrderNumber(orderNumber));
+        return orderNumber;
     }
 } 

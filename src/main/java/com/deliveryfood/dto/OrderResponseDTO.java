@@ -8,6 +8,7 @@ import com.deliveryfood.entity.OrderStatus;
 
 public record OrderResponseDTO(
     Long id,
+    String orderNumber,
     Long userId,
     String userName,
     Long restaurantId,
