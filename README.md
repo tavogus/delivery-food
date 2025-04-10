@@ -78,6 +78,7 @@ The application will start on `http://localhost:8080`
 - Product: Represents food items available in restaurants
 - Order: Represents user orders
 - OrderItem: Represents items within an order
+- OrderRating: Represents user ratings for delivered orders
 
 ## API Endpoints
 
@@ -145,4 +146,11 @@ The application will start on `http://localhost:8080`
   - Request Body: `OrderStatus` (e.g., `"CONFIRMED"`, `"DELIVERED"`)
   - Response: `OrderResponseDTO`
 - **POST /pay/{orderId}/user/{userId}**: Mark an order as paid.
-  - Response: `OrderResponseDTO` 
+  - Response: `OrderResponseDTO`
+- **POST /{orderId}/rating**: Rate a delivered order.
+  - Request Body: `OrderRatingRequestDTO` (rating: 1-5, optional comment)
+  - Response: `OrderRatingResponseDTO`
+- **GET /{orderId}/rating**: Get the rating for a specific order.
+  - Response: `OrderRatingResponseDTO`
+- **GET /restaurant/{restaurantId}/ratings**: Get all ratings for a specific restaurant.
+  - Response: `List<OrderRatingResponseDTO>` 
