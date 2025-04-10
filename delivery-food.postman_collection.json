@@ -389,6 +389,55 @@
 							"path": ["api", "orders", "1", "status"]
 						}
 					}
+				},
+				{
+					"name": "Rate Order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"rating\": 5,\n    \"comment\": \"Great food and fast delivery!\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/orders/1/rating",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "orders", "1", "rating"]
+						}
+					}
+				},
+				{
+					"name": "Get Order Rating",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:8080/api/orders/1/rating",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "orders", "1", "rating"]
+						}
+					}
+				},
+				{
+					"name": "Get Restaurant Ratings",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:8080/api/orders/restaurant/1/ratings",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "orders", "restaurant", "1", "ratings"]
+						}
+					}
 				}
 			]
 		}
