@@ -1,101 +1,11 @@
 {
 	"info": {
-		"_postman_id": "delivery-food-collection",
+		"_postman_id": "1a2b3c4d-5e6f-7g8h-9i0j-1k2l3m4n5o6p",
 		"name": "Delivery Food API",
-		"description": "API collection for the Delivery Food application",
+		"description": "API for food delivery application",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
-		{
-			"name": "Users",
-			"item": [
-				{
-					"name": "Create User",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"john@example.com\",\n    \"password\": \"password123\",\n    \"phone\": \"(11) 99999-9999\"\n}"
-						},
-						"url": {
-							"raw": "http://localhost:8080/api/users",
-							"protocol": "http",
-							"host": ["localhost"],
-							"port": "8080",
-							"path": ["api", "users"]
-						}
-					}
-				},
-				{
-					"name": "Get User",
-					"request": {
-						"method": "GET",
-						"url": {
-							"raw": "http://localhost:8080/api/users/1",
-							"protocol": "http",
-							"host": ["localhost"],
-							"port": "8080",
-							"path": ["api", "users", "1"]
-						}
-					}
-				},
-				{
-					"name": "Get All Users",
-					"request": {
-						"method": "GET",
-						"url": {
-							"raw": "http://localhost:8080/api/users",
-							"protocol": "http",
-							"host": ["localhost"],
-							"port": "8080",
-							"path": ["api", "users"]
-						}
-					}
-				},
-				{
-					"name": "Update User",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\": \"John Updated\",\n    \"email\": \"john.updated@example.com\",\n    \"password\": \"newpassword123\",\n    \"phone\": \"(11) 88888-8888\"\n}"
-						},
-						"url": {
-							"raw": "http://localhost:8080/api/users/1",
-							"protocol": "http",
-							"host": ["localhost"],
-							"port": "8080",
-							"path": ["api", "users", "1"]
-						}
-					}
-				},
-				{
-					"name": "Delete User",
-					"request": {
-						"method": "DELETE",
-						"url": {
-							"raw": "http://localhost:8080/api/users/1",
-							"protocol": "http",
-							"host": ["localhost"],
-							"port": "8080",
-							"path": ["api", "users", "1"]
-						}
-					}
-				}
-			]
-		},
 		{
 			"name": "Restaurants",
 			"item": [
@@ -111,27 +21,12 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Tasty Restaurant\",\n    \"description\": \"Best food in town\",\n    \"address\": \"789 Food St, City, State\",\n    \"phone\": \"(11) 77777-7777\",\n    \"openingHours\": \"09:00-22:00\",\n    \"deliveryFee\": 5.99,\n    \"minimumOrder\": 20.00\n}"
+							"raw": "{\n    \"name\": \"Pizza Place\",\n    \"description\": \"Best pizza in town\",\n    \"address\": \"123 Main St\",\n    \"phone\": \"(11) 99999-9999\",\n    \"openingHours\": \"09:00-22:00\",\n    \"deliveryFee\": 5.99,\n    \"minimumOrder\": 20.00\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/restaurants",
-							"protocol": "http",
-							"host": ["localhost"],
-							"port": "8080",
+							"raw": "{{base_url}}/api/restaurants",
+							"host": ["{{base_url}}"],
 							"path": ["api", "restaurants"]
-						}
-					}
-				},
-				{
-					"name": "Get Restaurant",
-					"request": {
-						"method": "GET",
-						"url": {
-							"raw": "http://localhost:8080/api/restaurants/1",
-							"protocol": "http",
-							"host": ["localhost"],
-							"port": "8080",
-							"path": ["api", "restaurants", "1"]
 						}
 					}
 				},
@@ -140,11 +35,20 @@
 					"request": {
 						"method": "GET",
 						"url": {
-							"raw": "http://localhost:8080/api/restaurants",
-							"protocol": "http",
-							"host": ["localhost"],
-							"port": "8080",
+							"raw": "{{base_url}}/api/restaurants",
+							"host": ["{{base_url}}"],
 							"path": ["api", "restaurants"]
+						}
+					}
+				},
+				{
+					"name": "Get Restaurant by ID",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/restaurants/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "restaurants", "1"]
 						}
 					}
 				},
@@ -160,13 +64,11 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Updated Restaurant\",\n    \"description\": \"Even better food now\",\n    \"address\": \"999 New Food St, City, State\",\n    \"phone\": \"(11) 66666-6666\",\n    \"openingHours\": \"10:00-23:00\",\n    \"deliveryFee\": 4.99,\n    \"minimumOrder\": 15.00\n}"
+							"raw": "{\n    \"name\": \"Updated Pizza Place\",\n    \"description\": \"Even better pizza in town\",\n    \"address\": \"123 Main St\",\n    \"phone\": \"(11) 99999-9999\",\n    \"openingHours\": \"09:00-22:00\",\n    \"deliveryFee\": 5.99,\n    \"minimumOrder\": 20.00\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/restaurants/1",
-							"protocol": "http",
-							"host": ["localhost"],
-							"port": "8080",
+							"raw": "{{base_url}}/api/restaurants/1",
+							"host": ["{{base_url}}"],
 							"path": ["api", "restaurants", "1"]
 						}
 					}
@@ -176,10 +78,8 @@
 					"request": {
 						"method": "DELETE",
 						"url": {
-							"raw": "http://localhost:8080/api/restaurants/1",
-							"protocol": "http",
-							"host": ["localhost"],
-							"port": "8080",
+							"raw": "{{base_url}}/api/restaurants/1",
+							"host": ["{{base_url}}"],
 							"path": ["api", "restaurants", "1"]
 						}
 					}
@@ -201,27 +101,12 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"restaurantId\": 1,\n    \"name\": \"Margherita Pizza\",\n    \"description\": \"Classic Italian pizza with tomato and mozzarella\",\n    \"price\": 45.90,\n    \"category\": \"PIZZA\",\n    \"imageUrl\": \"https://example.com/pizza.jpg\",\n    \"available\": true\n}"
+							"raw": "{\n    \"restaurantId\": 1,\n    \"name\": \"Margherita Pizza\",\n    \"description\": \"Classic tomato and mozzarella\",\n    \"price\": 29.99,\n    \"category\": \"PIZZA\",\n    \"imageUrl\": \"https://example.com/pizza.jpg\",\n    \"available\": true\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/products",
-							"protocol": "http",
-							"host": ["localhost"],
-							"port": "8080",
+							"raw": "{{base_url}}/api/products",
+							"host": ["{{base_url}}"],
 							"path": ["api", "products"]
-						}
-					}
-				},
-				{
-					"name": "Get Product",
-					"request": {
-						"method": "GET",
-						"url": {
-							"raw": "http://localhost:8080/api/products/1",
-							"protocol": "http",
-							"host": ["localhost"],
-							"port": "8080",
-							"path": ["api", "products", "1"]
 						}
 					}
 				},
@@ -230,11 +115,20 @@
 					"request": {
 						"method": "GET",
 						"url": {
-							"raw": "http://localhost:8080/api/products",
-							"protocol": "http",
-							"host": ["localhost"],
-							"port": "8080",
+							"raw": "{{base_url}}/api/products",
+							"host": ["{{base_url}}"],
 							"path": ["api", "products"]
+						}
+					}
+				},
+				{
+					"name": "Get Product by ID",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/products/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "products", "1"]
 						}
 					}
 				},
@@ -243,10 +137,8 @@
 					"request": {
 						"method": "GET",
 						"url": {
-							"raw": "http://localhost:8080/api/products/restaurant/1",
-							"protocol": "http",
-							"host": ["localhost"],
-							"port": "8080",
+							"raw": "{{base_url}}/api/products/restaurant/1",
+							"host": ["{{base_url}}"],
 							"path": ["api", "products", "restaurant", "1"]
 						}
 					}
@@ -263,13 +155,11 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"restaurantId\": 1,\n    \"name\": \"Updated Pizza\",\n    \"description\": \"Even better pizza with extra cheese\",\n    \"price\": 49.90,\n    \"category\": \"PIZZA\",\n    \"imageUrl\": \"https://example.com/updated-pizza.jpg\",\n    \"available\": true\n}"
+							"raw": "{\n    \"restaurantId\": 1,\n    \"name\": \"Updated Margherita Pizza\",\n    \"description\": \"Classic tomato and mozzarella with basil\",\n    \"price\": 32.99,\n    \"category\": \"PIZZA\",\n    \"imageUrl\": \"https://example.com/pizza.jpg\",\n    \"available\": true\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/products/1",
-							"protocol": "http",
-							"host": ["localhost"],
-							"port": "8080",
+							"raw": "{{base_url}}/api/products/1",
+							"host": ["{{base_url}}"],
 							"path": ["api", "products", "1"]
 						}
 					}
@@ -279,10 +169,8 @@
 					"request": {
 						"method": "DELETE",
 						"url": {
-							"raw": "http://localhost:8080/api/products/1",
-							"protocol": "http",
-							"host": ["localhost"],
-							"port": "8080",
+							"raw": "{{base_url}}/api/products/1",
+							"host": ["{{base_url}}"],
 							"path": ["api", "products", "1"]
 						}
 					}
@@ -304,27 +192,12 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"userId\": 1,\n    \"restaurantId\": 1,\n    \"items\": [\n        {\n            \"productId\": 1,\n            \"quantity\": 2,\n            \"notes\": \"Extra cheese please\"\n        }\n    ],\n    \"deliveryAddress\": \"123 Main St, City, State\",\n    \"paymentMethod\": \"CREDIT_CARD\"\n}"
+							"raw": "{\n    \"restaurantId\": 1,\n    \"items\": [\n        {\n            \"productId\": 1,\n            \"quantity\": 2\n        }\n    ],\n    \"deliveryAddress\": \"123 Main St\",\n    \"paymentMethod\": \"CREDIT_CARD\"\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/orders",
-							"protocol": "http",
-							"host": ["localhost"],
-							"port": "8080",
+							"raw": "{{base_url}}/api/orders",
+							"host": ["{{base_url}}"],
 							"path": ["api", "orders"]
-						}
-					}
-				},
-				{
-					"name": "Get Order",
-					"request": {
-						"method": "GET",
-						"url": {
-							"raw": "http://localhost:8080/api/orders/1",
-							"protocol": "http",
-							"host": ["localhost"],
-							"port": "8080",
-							"path": ["api", "orders", "1"]
 						}
 					}
 				},
@@ -333,37 +206,41 @@
 					"request": {
 						"method": "GET",
 						"url": {
-							"raw": "http://localhost:8080/api/orders",
-							"protocol": "http",
-							"host": ["localhost"],
-							"port": "8080",
+							"raw": "{{base_url}}/api/orders",
+							"host": ["{{base_url}}"],
 							"path": ["api", "orders"]
 						}
 					}
 				},
 				{
-					"name": "Get Orders by User",
+					"name": "Get Order by ID",
 					"request": {
 						"method": "GET",
 						"url": {
-							"raw": "http://localhost:8080/api/orders/user/1",
-							"protocol": "http",
-							"host": ["localhost"],
-							"port": "8080",
-							"path": ["api", "orders", "user", "1"]
+							"raw": "{{base_url}}/api/orders/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "orders", "1"]
 						}
 					}
 				},
 				{
-					"name": "Get Orders by Restaurant",
+					"name": "Pay Order",
 					"request": {
-						"method": "GET",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"paymentMethod\": \"CREDIT_CARD\",\n    \"cardNumber\": \"4111111111111111\",\n    \"cardHolderName\": \"John Doe\",\n    \"expirationDate\": \"12/25\",\n    \"cvv\": \"123\"\n}"
+						},
 						"url": {
-							"raw": "http://localhost:8080/api/orders/restaurant/1",
-							"protocol": "http",
-							"host": ["localhost"],
-							"port": "8080",
-							"path": ["api", "orders", "restaurant", "1"]
+							"raw": "{{base_url}}/api/orders/1/pay",
+							"host": ["{{base_url}}"],
+							"path": ["api", "orders", "1", "pay"]
 						}
 					}
 				},
@@ -379,13 +256,11 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "\"PREPARING\""
+							"raw": "{\n    \"status\": \"DELIVERED\"\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/orders/1/status",
-							"protocol": "http",
-							"host": ["localhost"],
-							"port": "8080",
+							"raw": "{{base_url}}/api/orders/1/status",
+							"host": ["{{base_url}}"],
 							"path": ["api", "orders", "1", "status"]
 						}
 					}
@@ -402,14 +277,12 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"rating\": 5,\n    \"comment\": \"Great food and fast delivery!\"\n}"
+							"raw": "{\n    \"rating\": 5,\n    \"comment\": \"Great service and delicious food!\"\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/orders/1/rating",
-							"protocol": "http",
-							"host": ["localhost"],
-							"port": "8080",
-							"path": ["api", "orders", "1", "rating"]
+							"raw": "{{base_url}}/api/orders/1/rate",
+							"host": ["{{base_url}}"],
+							"path": ["api", "orders", "1", "rate"]
 						}
 					}
 				},
@@ -418,10 +291,8 @@
 					"request": {
 						"method": "GET",
 						"url": {
-							"raw": "http://localhost:8080/api/orders/1/rating",
-							"protocol": "http",
-							"host": ["localhost"],
-							"port": "8080",
+							"raw": "{{base_url}}/api/orders/1/rating",
+							"host": ["{{base_url}}"],
 							"path": ["api", "orders", "1", "rating"]
 						}
 					}
@@ -431,15 +302,20 @@
 					"request": {
 						"method": "GET",
 						"url": {
-							"raw": "http://localhost:8080/api/orders/restaurant/1/ratings",
-							"protocol": "http",
-							"host": ["localhost"],
-							"port": "8080",
+							"raw": "{{base_url}}/api/orders/restaurant/1/ratings",
+							"host": ["{{base_url}}"],
 							"path": ["api", "orders", "restaurant", "1", "ratings"]
 						}
 					}
 				}
 			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8080",
+			"type": "string"
 		}
 	]
 } 

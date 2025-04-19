@@ -51,8 +51,8 @@ public class OrderRatingService {
         rating.setRating(request.rating());
         rating.setComment(request.comment());
 
-        OrderRating savedRating = orderRatingRepository.save(rating);
-        return toResponse(savedRating);
+        rating = orderRatingRepository.save(rating);
+        return toResponse(rating);
     }
 
     public OrderRatingResponseDTO getOrderRating(Long orderId) {
