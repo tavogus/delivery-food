@@ -10,7 +10,6 @@ import com.deliveryfood.entity.Order;
 import com.deliveryfood.entity.OrderRating;
 import com.deliveryfood.entity.Restaurant;
 
-@Repository
 public interface OrderRatingRepository extends JpaRepository<OrderRating, Long> {
     Optional<OrderRating> findByOrder(Order order);
     boolean existsByOrder(Order order);
